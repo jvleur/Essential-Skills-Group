@@ -1,0 +1,132 @@
+\chapter{RegEx backtracking}
+\section{Theoretical introduction}
+
+Regex is a general concept in computer science. A backtracking algorithm is often used for finding solutions to a certain type of computational problems, where it incrementally builds possible candidates for a solution and takes a step back every time a certain path is determined not to lead to the desired solution. For a broader introduction to the concept of backtracking in general, see \cite{backtracking-wikipedia-backtracking}.
+
+\subsection{Example: Sudoku}
+
+More concretely, one could create a backtracking algorithm to solve puzzles like Sudoku. The algorithm would set off on a certain path, say, inserting a “1” on the first empty cell it comes across, and continues inserting values in other cells in some deterministic way. If it encounters a certain setup of the Sudoku that violates the rules, it backtracks the the last valid state and tries going another path from there, and so on. 
+
+
+\section{Backtracking in regexes}
+
+In Perl/PCRE1)\cite{backtracking-perl_pcre} regular expressions, backtracking is apparent in the greedy “0 or more” quantifier, *, and the non-greedy “0 or more” quantifier, *?. Their non-backtracking counterpart is the so-called “possessive quantifier”: *+.
+
+A short summary of what they do:
+
+\subsection{Greedy quantifier}
+
+x* matches 0 or more of x. It keeps matching until x doesn't match anymore and then looks at the next expression and tries to match that one. If it can't, it'll keep backtracking until it can match the next expression with the input string.
+
+\subsection{Non-greedy quantifier}
+
+x*? matches 0 or more of x. In contrast to the greedy quantifier, it looks ahead to the next expression to be matched before it consumes another match for x.
+
+\subsection{Possessive quantifier}
+
+x*+ matches 0 or more of x. In contrast to the greedy quantifier, it doesn't backtrack.
+
+\subsection{Examples to clarify the differences}
+
+All following examples takes the string +abc+ as input string to match on, or some substring of that.
+
+\subsubsection{Example 1: A normal use case of the greedy quantifier}
+The normal behaviour of the \textit{greedy identifier} is shown in table \ref{backtracking-example_1}.
+\begin{itemize}
+\item Regex: .*
+\item Input \#abc\#
+\end{itemize}
+
+\begin{table}[!ht]
+\center
+\begin{tabular}{|l|l|}
+	\hline 
+	Step & Matched \\ \hline
+	1 & \underline{\#}abc\# \\ \hline
+	2 & \underline{\#a}bc\# \\ \hline
+	5 & \underline{\#abc\#} \\ 
+	\hline
+\end{tabular}
+\caption{Example 1}\label{backtracking-example_1}
+\end{table}
+
+\subsubsection{Example 2: Backtracking of the greedy quantifier which leads to success}
+Please see table \ref{backtracking-example_2a}.
+\begin{itemize}
+\item Regex: .*\#
+\item Input \#abc\#
+\end{itemize}
+
+\begin{table}[!ht]
+\center
+\begin{tabular}{|l|l|l|}
+	\hline
+	Step & Matched & Location in regex \\ \hline
+	1 & \underline{\#}abc & .* \\ \hline
+	2 & \underline{\#a}bc\# & .* \\ \hline
+	5 & \underline{\#abc\#} & .* \\
+	\hline
+\end{tabular}
+\caption{Example 2a}\label{backtracking-example_2a}
+\end{table}
+
+.* is now done. The regex engine will try to match \# but since its cursor has reached the end of the line, there is no \# to be found. It'll backtrack until it finds one as shown in table \ref{backtracking-example_2b}:
+
+\begin{table}[!ht]
+\center
+\begin{tabular}{|l|l|l|}
+	\hline
+	Step & Matched & Location in regex \\ \hline
+	6 & \underline{\#abc}\# & \# (backtracked once) \\ \hline
+	7 & \underline{\#abc\#} & \# \\
+	\hline
+\end{tabular}
+\caption{Example 2b}\label{backtracking-example_2b}
+\end{table}
+
+If the quantifier *+ had been used, no backtracking had been possible and the input had not been matched.
+
+\subsubsection{Example 3: Greedy quantifier backtracking is not always a good idea}
+
+If an input can't possibly match, it's often more efficient to have a non-backtracking quantifier. This is shown in tables \ref{backtracking-example_3a} and \ref{backtracking-example_3b}.
+
+\begin{itemize}
+\item Regex: .*\#
+\item Input \#abc
+\end{itemize}
+
+\begin{table}[!ht]
+\center
+\begin{tabular}{|l|l|l|}
+	\hline
+	Step & Matched & Location in regex \\ \hline
+	1 & \underline{\#}abc & .* \\ \hline
+	2 & \underline{\#a}bc & .* \\ \hline
+	4 & \underline{\#abc} & .* \\
+	\hline
+\end{tabular}
+\caption{Example 3a}\label{backtracking-example_3a}
+\end{table}
+
+In this point, the engine will try to match the last \# in the regex, but it can't do so because the end of the input has been reached. The backtracking quantifier would go on as shown in table \ref{backtracking-example_3b}:
+
+\begin{table}[!ht]
+\center
+\begin{tabular}{|l|l|l|l|}
+	\hline
+	Step & Matched & Location in regex & Annotation \\ \hline
+	5 & \underline{\#abc} & \# & end of line: no \# here \\ \hline
+	6 & \underline{\#ab}c & \# (backtracked once) & c != \# \\ \hline
+	7 & \underline{\#a}bc & \# (backtracked twice) & b != \# \\ \hline
+	8 & \underline{\#}abc & \# (backtracked 3 time) & a != \# \\ \hline
+	9 & \underline{\#}abc & \# (backtracked 4 times) & \# == \#, match \\
+	\hline
+\end{tabular}
+\caption{Example 3b}\label{backtracking-example_3b}
+\end{table}
+
+Now the regex is completed, but not all of the input has been matched. It has taken the engine 9 steps to complete and find that the input doesn't match. Had a possessive, that is, non-backtracking, quantifier been used, this had become clear after 4 steps.
+
+\subsection{Conclusion}
+
+There is no better or worse quantifier in general, but one quantifier may perform better under some conditions than the other.
