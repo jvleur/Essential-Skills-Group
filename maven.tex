@@ -1,4 +1,5 @@
 \chapter{Maven}
+\author{Jeroen van Leur}
 
 \begin{wrapfigure}{R}{0.5\textwidth}
  \vspace{-20pt}
@@ -6,17 +7,13 @@
   \includegraphics[scale=0.5]{apache-maven.jpg}
   \end{centering}
   \vspace{-40pt}
-   \caption{Apache Maven Icon}
+  \caption{Apache Maven Icon\protect\footnotemark}
+ % \footnotetext{\url{http://iamnifras.blogspot.nl/}} 
   \label{fig:maven1}
 \end{wrapfigure}
-Maven is a Java-based tool that can be used for building, management and comprehension tool. The tool itself can only parse XML files but by installing plugins Maven is able to do so much more. One of the important features is the building of programs. Maven can be used to build Java programs and through incorporating the makefile it is also possible to build programs through the same way as auto tool. Each project requires a Project Object Model(POM) which contains information about the project and configuration details to build the project. Some of the details can be the dependencies, plugins, goals, version, mailing list etc. The concept POM.xml is similar to the makefile of auto tools.
-%\begin{wrapfigure}{R}{0.5\textwidth}
-% \begin{center}
-%  \includegraphics[scale=0.5]{apache-maven.jpg}
-%  \end{center}
-%   \caption{Apache Maven Icon}
- % \label{fig:maven1}
-%\end{wrapfigure}
+ \footnotetext{\url{http://iamnifras.blogspot.nl/}}
+
+Maven is a Java-based tool that can be used for building, management and comprehension tool. The Maven project is hosted by the Apache Software Foundation, where it was formerly part of the Jakarta Project. The figure \ref{fig:maven1} shows the involvement of Apache. The tool itself can only parse XML files but by installing plugins Maven is able to do so much more. One of the important features is the building of programs. Maven can be used to build Java programs and through incorporating the makefile it is also possible to build programs through the same way as auto tool. Each project requires a Project Object Model(POM) which contains information about the project and configuration details to build the project. Some of the details can be the dependencies, plugins, goals, version, mailing list etc. The concept POM.xml is similar to the makefile of auto tools.
 
 \section{What are the features of Maven}
 
@@ -99,5 +96,8 @@ It is possible to create a jar file that can execute anywhere without dependenci
 	\item install: install the package into the local repository, for use as a dependency in other projects locally
 	\item deploy: done in an integration or release environment, copies the final package to the remote repository for sharing with other developers and projects.
 \end{itemize}
+\newpage
+\section{References}
+This is the list of websites that have been used to write this chapter.
 
 
