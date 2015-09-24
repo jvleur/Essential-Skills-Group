@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+root@jeroenvl\PYGZhy{}SNE:/home/testapp\PYGZsh{} cat pom.xml
+\PYG{n+nt}{\PYGZlt{}project} \PYG{n+na}{xmlns=}\PYG{l+s}{\PYGZdq{}http://maven.apache.org/POM/4.0.0\PYGZdq{}} \PYG{n+na}{xmlns:xsi=}\PYG{l+s}{\PYGZdq{}http://www.w3.org/2001/XMLSchema\PYGZhy{}instance\PYGZdq{}}
+  \PYG{n+na}{xsi:schemaLocation=}\PYG{l+s}{\PYGZdq{}http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven\PYGZhy{}v4\PYGZus{}0\PYGZus{}0.xsd\PYGZdq{}}\PYG{n+nt}{\PYGZgt{}}
+  \PYG{n+nt}{\PYGZlt{}modelVersion\PYGZgt{}}4.0.0\PYG{n+nt}{\PYGZlt{}/modelVersion\PYGZgt{}}
+  \PYG{n+nt}{\PYGZlt{}groupId\PYGZgt{}}com.mycompany.app\PYG{n+nt}{\PYGZlt{}/groupId\PYGZgt{}}
+  \PYG{n+nt}{\PYGZlt{}artifactId\PYGZgt{}}testapp\PYG{n+nt}{\PYGZlt{}/artifactId\PYGZgt{}}
+  \PYG{n+nt}{\PYGZlt{}packaging\PYGZgt{}}jar\PYG{n+nt}{\PYGZlt{}/packaging\PYGZgt{}}
+  \PYG{n+nt}{\PYGZlt{}version\PYGZgt{}}1.0\PYGZhy{}SNAPSHOT\PYG{n+nt}{\PYGZlt{}/version\PYGZgt{}}
+  \PYG{n+nt}{\PYGZlt{}name\PYGZgt{}}testapp\PYG{n+nt}{\PYGZlt{}/name\PYGZgt{}}
+  \PYG{n+nt}{\PYGZlt{}url\PYGZgt{}}http://maven.apache.org\PYG{n+nt}{\PYGZlt{}/url\PYGZgt{}}
+  \PYG{n+nt}{\PYGZlt{}dependencies\PYGZgt{}}
+    \PYG{n+nt}{\PYGZlt{}dependency\PYGZgt{}}
+      \PYG{n+nt}{\PYGZlt{}groupId\PYGZgt{}}junit\PYG{n+nt}{\PYGZlt{}/groupId\PYGZgt{}}
+      \PYG{n+nt}{\PYGZlt{}artifactId\PYGZgt{}}junit\PYG{n+nt}{\PYGZlt{}/artifactId\PYGZgt{}}
+      \PYG{n+nt}{\PYGZlt{}version\PYGZgt{}}3.8.1\PYG{n+nt}{\PYGZlt{}/version\PYGZgt{}}
+      \PYG{n+nt}{\PYGZlt{}scope\PYGZgt{}}test\PYG{n+nt}{\PYGZlt{}/scope\PYGZgt{}}
+    \PYG{n+nt}{\PYGZlt{}/dependency\PYGZgt{}}
+  \PYG{n+nt}{\PYGZlt{}/dependencies\PYGZgt{}}
+\PYG{n+nt}{\PYGZlt{}/project\PYGZgt{}}
+\end{Verbatim}
