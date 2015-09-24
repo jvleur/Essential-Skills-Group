@@ -4,6 +4,9 @@
 \usepackage{color}
 \usepackage{geometry}
 \usepackage[colorlinks=false, pdfborder={0 0 0}]{hyperref}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage{wrapfig}
 \usepackage[backend=bibtex]{biblatex}
 \addbibresource{shared.bib}
 
@@ -16,6 +19,8 @@
 \maketitle
 \tableofcontents
 
+\input{./maven.tex}
+\input{./XMLDatabase.tex}
 \input{./regex_backtracking.tex}
 
 \printbibliography[title={References},heading=bibintoc]

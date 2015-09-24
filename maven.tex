@@ -1,6 +1,22 @@
 \chapter{Maven}
 
+\begin{wrapfigure}{R}{0.5\textwidth}
+ \vspace{-20pt}
+  \begin{centering}
+  \includegraphics[scale=0.5]{apache-maven.jpg}
+  \end{centering}
+  \vspace{-40pt}
+   \caption{Apache Maven Icon}
+  \label{fig:maven1}
+\end{wrapfigure}
 Maven is a Java-based tool that can be used for building, management and comprehension tool. The tool itself can only parse XML files but by installing plugins Maven is able to do so much more. One of the important features is the building of programs. Maven can be used to build Java programs and through incorporating the makefile it is also possible to build programs through the same way as auto tool. Each project requires a Project Object Model(POM) which contains information about the project and configuration details to build the project. Some of the details can be the dependencies, plugins, goals, version, mailing list etc. The concept POM.xml is similar to the makefile of auto tools.
+%\begin{wrapfigure}{R}{0.5\textwidth}
+% \begin{center}
+%  \includegraphics[scale=0.5]{apache-maven.jpg}
+%  \end{center}
+%   \caption{Apache Maven Icon}
+ % \label{fig:maven1}
+%\end{wrapfigure}
 
 \section{What are the features of Maven}
 
@@ -19,28 +35,28 @@ Possibility to download and install dependencies Parsing XML files(e.g. POM.xml)
 This chapter contains details on the installation and usage of Maven on a Linux system. The installation is tested on a system with the operating system \textbf{Ubuntu 15.04 Desktop version}.
 The standard repository doesn't provide the packages that are required for Maven3 and therefore the file at \mbox{\textit{etc/apt/sources.list}} must be modified.
 
-\begin{framed}
-deb http://ppa.launchpad.net/natecarlson/maven3/ubuntu precise main\\
+\begin{minted}{bash}
+deb http://ppa.launchpad.net/natecarlson/maven3/ubuntu precise main
 deb-src http://ppa.launchpad.net/natecarlson/maven3/ubuntu precise main
-\end{framed}
+\end{minted}
 
 Update the Ubuntu package list from the repositories and retrieve information on the newest versions of the packages.
 
-\begin{framed}
-sudo apt-get update;sudo apt-get install maven3 \\
+\begin{minted}{bash}
+sudo apt-get update && sudo apt-get install maven3 
 sudo ln -s /usr/share/maven3/bin/mvn /usr/bin apt-get install default-jdk
-\end{framed}
+\end{minted}
 
 \section{Creating a Maven Project}
 To create a simple project it is possible to use the Maven's archetype mechanism. This is basically a template for a project. By executing the following command: 
-\begin{framed}
+\begin{minted}{bash}
  mvn -B archetype:generate \
       -DarchetypeGroupId=org.apache.maven.archetypes \
       -DgroupId=com.mycompany.app \
-\end{framed}
+\end{minted}
 The following code is an example of the pom.xml and can be manually modified.
 
-\begin{lstlisting}
+\begin{minted}[breaklines, breakanywhere]{xml}
 root@jeroenvl-SNE:/home/testapp# cat pom.xml 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -60,14 +76,14 @@ root@jeroenvl-SNE:/home/testapp# cat pom.xml
     </dependency>
   </dependencies>
 </project>
-\end{lstlisting}
+\end{minted}
 
 The compilation of a project can be initiated by using the \textbf{mvn compile} and the \textbf{mvn package} command.
 The execution of the project can be started by typing:
 
-\begin{lstlisting}
+\begin{minted}{bash}
 java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App 
-\end{lstlisting}
+\end{minted}
 
 It is possible to create a jar file that can execute anywhere without dependencies in the same directory structure. However this requires special Maven plugins to be integrated. These plugins can be inserted in the pom.xml file.\newpage 
 
