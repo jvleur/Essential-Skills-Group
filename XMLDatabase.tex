@@ -1,9 +1,9 @@
 
 
 \chapter{XML Database}
-\paragraph{Introduction}
+\section{Introduction}
 An XML database is a data persistent software (meaning it saves older versions of the data) that allows data to be specified and sometimes stored in XML format. This is a type of document oriented database. It comes in two flavors, XML enabled database and native XML database.
-\subsection{Document oriented database}
+\section{Document oriented database}
 
 A document oriented database is a radically different approach compared to the traditional relational database. In a relational database you have a traditional row/column approach. Meaning each row is accessed by a key and represents all the values of an object with values stored in the different columns. The drawback of this approach is that the structure is rigid. If you want to add a new value type in the column you would have to redo the whole database architecture because you change the nature of the table. In a document oriented database you replace rows by documents. Documents will store all the information you want about a specific object thus containing all that a row would contain. For example lets say that you want to store every car that exists:
 
@@ -11,6 +11,7 @@ A document oriented database is a radically different approach compared to the t
     In a document oriented database you would have a document named Previa that contains all the info about that car.
 
 The advantage of this technique is that any document can be as complex as you wish and not all the documents have to contain the same information therefore making the addition of a value much easier.
+\section{XML Databases}
 \subsection{XML enabled Database}
 
 An XML enabled database will store an XML file into the traditional relational structure. Different approaches can be made for this by either cutting the xml file into pieces and putting every value in a table or stored as a large string in a column of a table.
@@ -23,11 +24,11 @@ An XMl native database fully uses the document oriented approach. Its characteri
     physical model(and type of persistent NXD storage) is unspecified as long as XML documents are stored and manipulated as a logical whole.
 
 This kind of databases is a NoSQL database which means it does not uses SQL queries. Instead, data can be accessed with the XQuery language or XPath which can be considered as a disadvantage since SQL is so widely used.
-Uses of these databases\\*
-Gordana Pavlovic-lazetic \textit{¨Native XML databases vs. Relational databases in dealing with xml documents¨}\\*
+Uses of these databases\\* \cite{ref4}
+%Gordana Pavlovic-lazetic \textit{¨Native XML databases vs. Relational databases in dealing with xml documents¨}\\*
 
 
-\paragraph{Conclusion}
+\Section{Conclusion}
 XML enabled databases are best suited if the majority of your data is non-XML. It is basically an additional feature of your database for it to be able to understand and properly store XML content. XML native database is best suited is most of your data is XML or any non relational data structure.
 \subsection{references}
 
