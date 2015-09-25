@@ -1,6 +1,4 @@
 \chapter{Maven}
-\author{Jeroen van Leur}
-
 \begin{wrapfigure}{R}{0.5\textwidth}
  \vspace{-20pt}
   \begin{centering}
@@ -13,7 +11,7 @@
 \end{wrapfigure}
  \footnotetext{\url{http://iamnifras.blogspot.nl/}}
 
-Maven is a Java-based tool that can be used for building, management and comprehension tool. The Maven project is hosted by the Apache Software Foundation, where it was formerly part of the Jakarta Project. The figure \ref{fig:maven1} shows the involvement of Apache. The tool itself can only parse XML files but by installing plugins Maven is able to do so much more. One of the important features is the building of programs. Maven can be used to build Java programs and through incorporating the makefile it is also possible to build programs through the same way as auto tool. Each project requires a Project Object Model(POM) which contains information about the project and configuration details to build the project. Some of the details can be the dependencies, plugins, goals, version, mailing list etc. The concept POM.xml is similar to the makefile of auto tools.
+Maven\cite{maven-website} is a Java-based tool that can be used for building, management and comprehension tool. The Maven project is hosted by the Apache Software Foundation, where it was formerly part of the Jakarta Project. The figure \ref{fig:maven1} shows the involvement of Apache. The tool itself can only parse XML files but by installing plugins Maven is able to do so much more. One of the important features is the building of programs. Maven can be used to build Java programs and through incorporating the makefile it is also possible to build programs through the same way as auto tool. Each project requires a Project Object Model(POM) which contains information about the project and configuration details to build the project. Some of the details can be the dependencies, plugins, goals, version, mailing list etc. The concept POM.xml is similar to the makefile of auto tools.
 
 \section{What are the features of Maven}
 
@@ -45,7 +43,7 @@ sudo ln -s /usr/share/maven3/bin/mvn /usr/bin apt-get install default-jdk
 \end{minted}
 
 \section{Creating a Maven Project}
-To create a simple project it is possible to use the Maven's archetype mechanism. This is basically a template for a project. By executing the following command: 
+To create a simple project it is possible to use the Maven's archetype mechanism\cite{maven-book}. This is basically a template for a project. By executing the following command: 
 \begin{minted}{bash}
  mvn -B archetype:generate \
       -DarchetypeGroupId=org.apache.maven.archetypes \
@@ -82,7 +80,7 @@ The execution of the project can be started by typing:
 java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App 
 \end{minted}
 
-It is possible to create a jar file that can execute anywhere without dependencies in the same directory structure. However this requires special Maven plugins to be integrated. These plugins can be inserted in the pom.xml file.\newpage 
+It is possible to create a jar file that can execute anywhere without dependencies in the same directory structure. However this requires special Maven plugins to be integrated. These plugins can be inserted in the pom.xml file. 
 
 \section{Maven Phases}
 
@@ -97,7 +95,5 @@ It is possible to create a jar file that can execute anywhere without dependenci
 	\item deploy: done in an integration or release environment, copies the final package to the remote repository for sharing with other developers and projects.
 \end{itemize}
 \newpage
-\section{References}
-This is the list of websites that have been used to write this chapter.
 
 
