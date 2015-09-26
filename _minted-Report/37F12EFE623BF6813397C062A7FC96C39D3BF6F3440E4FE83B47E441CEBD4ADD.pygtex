@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
- mvn \PYGZhy{}B archetype:generate \PYG{l+s+se}{\PYGZbs{}}
-      \PYGZhy{}DarchetypeGroupId\PYG{o}{=}org.apache.maven.archetypes \PYG{l+s+se}{\PYGZbs{}}
-      \PYGZhy{}DgroupId\PYG{o}{=}com.mycompany.app \PYG{l+s+se}{\PYGZbs{}}
-\end{Verbatim}
