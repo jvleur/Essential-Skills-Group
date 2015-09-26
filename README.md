@@ -1,7 +1,8 @@
 # Essential-Skills-Group
 
 ## Prerequisites
-  * biblatex: apt-get install texlive-bibtex-extra
+  * Latex: apt-get install texlive-latex-base texlive-latex-extra
+  * Biblatex: apt-get install texlive-bibtex-extra
   
 ## Build
   * Add `--shell-escape` to your build line
