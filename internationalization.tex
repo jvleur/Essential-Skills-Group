@@ -1,13 +1,122 @@
 \chapter{XML Internationalization}
 Internationalization is the process of making software capable of being easily adaptable to different locations, technical requirements, etc. This includes for example making the language a modular part of the system, so that the system can easily be modified to show text in a different language.
-
 Localization is the process of actually adapting such a piece of software to a specific locality. Localization can take place multiple times, for example for each language a GUI application is translated to.
-\paragraph{i18n}
+\section{i18n}
 i18n is an abbreviation for internationalization, see following code.
 \begin{minted}{bash}
 >>> len('internationalization'[1:-1])
 18
 \end{minted}
-L10n is the term used for \"localization\", following the same simple recipe.
+L10n is the term used for localization, following the same simple recipe.
 
-Some companies like to add a their own abbreviations to the playing field, so terms like \"g11n\" (for globalization, which is internationalization and localization combined), \"world-readiness and localization\" and NLS (National/Native Language Support) can be found in the wild as well, basically referring to the same concept.
+Some companies like to add a their own abbreviations to the playing field, so terms like g11n (for \emph{globalization}, which is internationalization and localization combined), \emph{world-readiness and localization} and NLS (National/Native Language Support) can be found in the wild as well, basically referring to the same concept.
+
+\section{Translating XML documents}
+
+ There are various ways and various standards specifically for internationalizing XML. Due to the static nature of what XML can contain, it's best suited for hot-swappable data, such as text. Internationalizing certain business logic is best done on code level.
+
+One of the better known standards revolving around XML i18n are: 
+
+\begin{itemize}
+\item{XLIFF}
+\item{ITS}
+\item{TMX}
+\end{itemize}
+
+All these standards define tags and methods that can be used to communicate what parts should be translated and how. They all differ in the exact approach they take. 
+
+\section{XLIFF}
+
+ XLIFF is one of the available standards to aid in i18n and L10n. The rough process of internationalizing and localizing an XML file using XLIFF is shown in the next couple of code snippets. 
+
+\subsection{The Input HTML}
+
+This page contains a paragraph, the content of which should be internationalized.
+
+\begin{minted}{html}
+    <html>
+       <head>
+          <title></title>
+       </head>
+       <body>
+          <p>Hello world!</p>
+       </body>
+    </html>
+\end{minted}
+
+\subsection{Skeleton file}
+
+The next step is to create a skeleton of the input file. In a skeleton file, all translatable sequences are replaced with special characters.
+
+\begin{minted}{html}
+    <html>
+       <head>
+          <title></title>
+       </head>
+       <body>
+          <p>%%%1%%%</p>
+       </body>
+    </html>
+\end{minted}
+
+\subsection{XLIFF document}
+
+An XLIFF document is created with the extracted translatable data.
+
+\begin{minted}{html}
+<?xml version="1.0"?>
+<xliff version="1.0">
+  <file original="input.html" 
+        source-language="en" 
+        datatype="HTML Page">
+    <header>
+      <skl>
+        <external-file href="file.skl"/>
+      </skl>
+    </header>
+    <body>
+      <trans-unit id="%%%1%%%">
+        <source xml:lang="en">Hello world!</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
+\end{minted}
+
+\subsection{Pre-translation}
+
+ A translator would now be able to provide translations by iterating over the trans-units. Normally, this would be done with the aid of a system that already contains a lot of translations which could be filled in and only need to be hand-checked after.
+
+This could be the resulting file of doing such a translation:
+
+\begin{minted}{html}
+<trans-unit approved="no" id="5" resname="res5" xml:space="default">
+  <source xml:lang="en">
+    Hello world!
+  </source>
+  <target xml:lang="es"/>
+  <alt-trans match-quality="100" origin="web" tool="TM Search">
+    <source xml:lang="en">
+      Hello world!
+    </source>
+    <target xml:lang="nl">
+      Hallo wereld!
+    </target>
+  </alt-trans>
+</trans-unit>
+\end{minted}
+
+\subsection{The output HTML}
+
+Finally, the translated XLIFF file is merged with the skeleton file, which gives us back the input.html file, but translated. 
+
+\begin{minted}{html}
+    <html>
+       <head>
+          <title></title>
+       </head>
+       <body>
+          <p>Hallo wereld!</p>
+       </body>
+    </html>
+\end{minted}
