@@ -1,6 +1,9 @@
 
 
 \chapter{XML Database}
+%\begin{figure}[!t]
+%\includegraphics{xml-db.png}
+%\end{figure}
 \section{Introduction}
 An XML database is a data persistent software (meaning it saves older versions of the data) that allows data to be specified and sometimes stored in XML format. This is a type of document oriented database. It comes in two flavors, XML enabled database and native XML database.
 \section{Document oriented database}
@@ -26,8 +29,22 @@ An XMl native database fully uses the document oriented approach. Its characteri
 This kind of databases is a NoSQL database which means it does not uses SQL queries. Instead, data can be accessed with the XQuery language or XPath which can be considered as a disadvantage since SQL is so widely used.
 Uses of these databases\\* \cite{ref4}
 %Gordana Pavlovic-lazetic \textit{¨Native XML databases vs. Relational databases in dealing with xml documents¨}\\*
-
-
+\subsection{laguage features \cite{ref2}}
+\scalebox{0.7}{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+Name &	License & Native Language & XQuery 3.0 & XQuery Update & XQuery Full Text & EXPath Extensions &	EXQuery Extensions & XSLT 2.0\\
+\hline
+BaseX &	BSD License & Java & Yes & Yes & Yes & Yes & Yes & Yes\\
+\hline
+eXist &	LGP  License &	Java &	Partial & Proprietary &	Proprietary & No & Yes& yes\\
+\hline
+MarkLogic  Server & Commercial & C++ & Partial & Proprietary & Proprietary & No & No & yes\\
+\hline
+Qizx & Commercial & Java & Yes & Yes & Yes & No & No & Yes\\
+\hline
+\end{tabular}
+}
 \section{Conclusion}
 XML enabled databases are best suited if the majority of your data is non-XML. It is basically an additional feature of your database for it to be able to understand and properly store XML content. XML native database is best suited is most of your data is XML or any non relational data structure.
 \subsection{references}
